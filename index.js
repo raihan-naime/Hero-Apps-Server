@@ -6,7 +6,9 @@ const app = express();
 
 // Middlewares
 require("dotenv").config();
-app.use(cors());
+app.use(cors({
+  origin: ['https://hero-apps-9510e.web.app', 'http://localhost:5173']
+}));
 app.use(express.json());
 
 app.use(async (req, res, next) => {
@@ -19,7 +21,7 @@ app.use(async (req, res, next) => {
 });
 
 //ports & clients
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 const uri = process.env.URI;
 const client = new MongoClient(uri, {
   serverApi: {
